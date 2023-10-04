@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Exercício Prototype</title>
+</head>
+
+<body>
+  <ul>
+    <li>Item1</li>
+    <li>Item2</li>
+    <li id="tresLi">Item3</li>
+    <li>Item4</li>
+  </ul>
+
+  <ol>
+    <li></li>
+    <li></li>
+    <li></li>
+    <li></li>
+  </ol>
+
+
+  <script>
+    // Crie uma função construtora de Pessoas
+    // Deve conter nome, sobrenome e idade.
+    function Pessoa(nome, sobrenome, idade) {
+      this.name = nome
+      this.sobrename = sobrenome
+      this.age = idade
+    }
+    // Crie um método no protótipo que retorne
+    // o nome completo da pessoa
+    Pessoa.prototype.nomeCompleto = function () {
+      return `${this.name} ${this.sobrename}`
+    }
+    const andre = new Pessoa('André', 'Costa', 34)
+
+    // Liste os métodos acessados por 
+    // dados criados com NodeList,
+    console.log(NodeList.prototype);
+    // HTMLCollection, Document
+    console.log(HTMLCollection.prototype);
+    console.log(Object.getOwnPropertyNames(NodeList))
+    console.log(Object.getOwnPropertyNames(HTMLCollection))
+    Object.getOwnPropertyNames(Document) // DOM FUNCTION
+    // Liste os construtores dos dados abaixo
+    const li = document.querySelector('li');
+
+    li.HTMLLIElement
+    li.click; // Function
+    li.innerText; //String
+    li.value; //Number 
+    li.hidden; // Boolean 
+    li.offsetLeft; // Number
+    li.click(); // undefined  -> function que executa codigos dentro dela 
+    li.constructor.name // Syntax para saber o que de fato é o codigo, property, metodo, function ou valor nativo do JS
+
+
+    // Qual o construtor do dado abaixo:
+    li.hidden.constructor.name; // Me devolve o valor Boolean, no entanto isso eh considerado uma String. Siga o exemplo abaixo
+    const liHidden = li.hidden.constructor.name; //String
+    console.log(liHidden)
+    console.log(liHidden.constructor.name)
+
+    function clicou() {
+      li.addEventListener('click', function () {
+        console.log('clicado')
+      })
+    }
+    clicou()
+
+
+    const ul = document.getElementsByTagName('ul');
+    const allLi = document.querySelectorAll('ol li')
+    function changeColor() {
+      li[3].addEventListener('click', function () {
+        console.log('clicado2')
+      });
+    }
+
+
+  </script>
+
+</body>
+
+</html>
